@@ -21,6 +21,7 @@
 		A1829B9A182D09EA00660671 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1829B7C182D09E900660671 /* UIKit.framework */; };
 		A1829BA2182D09EA00660671 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1829BA0182D09EA00660671 /* InfoPlist.strings */; };
 		A1829BA4182D09EA00660671 /* TamagotchiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1829BA3182D09EA00660671 /* TamagotchiTests.m */; };
+		CB5310E0182F02E300B75DDD /* values.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB5310DF182F02E300B75DDD /* values.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A1829B9F182D09EA00660671 /* TamagotchiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TamagotchiTests-Info.plist"; sourceTree = "<group>"; };
 		A1829BA1182D09EA00660671 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1829BA3182D09EA00660671 /* TamagotchiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TamagotchiTests.m; sourceTree = "<group>"; };
+		CB5310DF182F02E300B75DDD /* values.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = values.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				A1829B81182D09EA00660671 /* InfoPlist.strings */,
 				A1829B84182D09EA00660671 /* main.m */,
 				A1829B86182D09EA00660671 /* Tamagotchi-Prefix.pch */,
+				CB5310DF182F02E300B75DDD /* values.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				A1829B91182D09EA00660671 /* Images.xcassets in Resources */,
 				A1829B83182D09EA00660671 /* InfoPlist.strings in Resources */,
+				CB5310E0182F02E300B75DDD /* values.plist in Resources */,
 				A1829B8C182D09EA00660671 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +468,7 @@
 				A1829BA9182D09EA00660671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1829BAA182D09EA00660671 /* Build configuration list for PBXNativeTarget "TamagotchiTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +477,7 @@
 				A1829BAC182D09EA00660671 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

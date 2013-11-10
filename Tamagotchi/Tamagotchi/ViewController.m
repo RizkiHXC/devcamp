@@ -27,26 +27,43 @@
 
 - (void)viewDidLoad
 {
-    healthInt = 100;
+ 
+    // Get values from PLIST file
+    NSURL *file = [[NSBundle mainBundle] URLForResource:@"values" withExtension:@"plist"]; //Lets get the file location
+    NSDictionary *plistContent = [NSDictionary dictionaryWithContentsOfURL:file];
+    NSString *coinsPlist = [plistContent objectForKey:@"coins"];
+    NSString *healthPlist = [plistContent objectForKey:@"health"];
     
+    
+    // Set PLIST values to integers
+    coinInt = [coinsPlist intValue];
+    healthInt = [healthPlist intValue];
+
+    
+    // Health label
     healthString = @"Health: ";
     healthAmount = [NSString stringWithFormat:@"%i", healthInt];
-    
-    coinString = @"Coins: ";
-    coinAmount = [NSString stringWithFormat:@"%i", coinInt];
     
     healthLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 30, 100, 100)];
     [healthLabel setText:[NSString stringWithFormat:@"%@%@", healthString, healthAmount]];
     [healthLabel sizeToFit];
+    
+    [self.view addSubview:healthLabel];
+    
+    
+    // Coins label
+    coinString = @"Coins: ";
+    coinAmount = [NSString stringWithFormat:@"%i", coinInt];
     
     coinLabel = [[UILabel alloc] init];
     [coinLabel setText:[NSString stringWithFormat:@"%@%@", coinString, coinAmount]];
     [coinLabel setFrame:CGRectMake(self.view.frame.size.width - 10 - 200, 30, 100, 100)];
     [coinLabel sizeToFit];
     
-    [self.view addSubview:healthLabel];
     [self.view addSubview:coinLabel];
     
+    
+    // Feed button bottom left
     UIButton *feedButton = [[UIButton alloc] initWithFrame:CGRectMake(10, self.view.frame.size.height - 10 - 50, 100, 50)];
     [feedButton setBackgroundColor:[UIColor whiteColor]];
     [feedButton setTitle:@"Feed me!" forState:UIControlStateNormal];
@@ -55,6 +72,10 @@
     [feedButton.layer setBorderWidth:1.0f];
     [feedButton addTarget:self action:@selector(healthAdd) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.view addSubview:feedButton];
+    
+    
+    // Play button bottom right
     UIButton *play = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 10 - feedButton.frame.size.width, self.view.frame.size.height - 10 - 50, 100, 50)];
     [play setBackgroundColor:[UIColor whiteColor]];
     [play setTitle:@"Fap!" forState:UIControlStateNormal];
@@ -63,8 +84,6 @@
     [play.layer setBorderWidth:1.0f];
     [play addTarget:self action:@selector(coinAdd) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    [self.view addSubview:feedButton];
     [self.view addSubview:play];
     
     
@@ -81,7 +100,6 @@
 
     
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,14 +108,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)decreaseHealth {
+- (void)decreaseHealth { // Woops! Tamagotchi is dying :(
     healthInt--;
     [self updateHealth];
     
     NSLog(@"%i", healthInt);
 }
 
-- (void)healthAdd {
+- (void)healthAdd { // Add health to integer and update to PLIST file
     if (coinInt > 10 && healthInt > 91) {
         healthInt = 100;
         coinInt -= 10;
@@ -112,20 +130,20 @@
     [self updateHealth];
 }
 
-- (void)coinAdd {
+- (void)coinAdd { // Add coin to integer and update to PLIST file
     coinInt++;
     
     [self updateCoins];
 }
 
-- (void)updateCoins {
+- (void)updateCoins { // Update coins in the label on the screen
     coinAmount = [NSString stringWithFormat:@"%i", coinInt];
     [coinLabel setText:[NSString stringWithFormat:@"%@%@", coinString, coinAmount]];
     
     [coinLabel sizeToFit];
 }
 
-- (void)updateHealth {
+- (void)updateHealth { // Update health in the label on the screen
     healthAmount = [NSString stringWithFormat:@"%i", healthInt];
     [healthLabel setText:[NSString stringWithFormat:@"%@%@", healthString, healthAmount]];
 }
